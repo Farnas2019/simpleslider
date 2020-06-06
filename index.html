@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slider</title>
+	<script type="text/javascript" src="jquery-3.5.0.min.js"></script>
+
+</head>
+<style type="text/css">
+	.slider{
+		width: 350px;
+		height: 200px;
+		position: relative;;
+	}
+	img{
+		max-width: 100%;
+		max-height: 100%;
+		position: absolute;
+		opacity: 0;
+		transition: 1s;
+
+	}
+	.active{
+		opacity: 1;
+	}
+</style>
+<body>
+<div class="slider">
+	<img src="images/1.jpg" class="active">
+	<img src="images/2.jpg">
+	<img src="images/3.jpg">
+	<img src="images/flogo.png">
+	<img src="images/2.jpg">
+	<img src="images/3.jpg">
+	<img src="images/2.jpg">
+	<img src="images/3.jpg">
+</div>
+</body>
+<script type="text/javascript">
+	function slider() {
+		$current = $('.slider img.active');
+		if ($current.length==0) {
+			$('.slider img:first-child').addClass('active');
+		}else{
+			$next = $current.removeClass('active').next();
+				if ($next.length==0) {
+					$('.slider img:first-child').addClass('active');
+				}else{
+					$next.addClass('active');
+				}
+		}
+
+	}
+	setInterval(slider,5000);
+</script>
+</html>
